@@ -1,0 +1,6 @@
+[package]
+name = "ff13-2-clock-puzzle-rs"
+version = "0.1.0"
+authors = ["Andrew Shu <talklittle@gmail.com>"]
+
+[dependencies]
