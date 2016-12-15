@@ -26,3 +26,7 @@ You can run a slightly modified version on https://play.rust-lang.org/ using thi
 https://is.gd/EQ9pqh
 
 And editing the `CLOCK_VALS` at the top of the code.
+
+# License
+
+[MIT License](LICENSE.md).
