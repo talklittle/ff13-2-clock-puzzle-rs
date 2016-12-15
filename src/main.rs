@@ -17,8 +17,9 @@ fn main() {
     for val in clock_vals {
         let low_destination  = (i - val + count) % count;  // +count to ensure positive
         let high_destination = (i + val) % count;
-        let destinations =
+        let mut destinations =
             if low_destination == high_destination { vec![low_destination] } else { vec![low_destination, high_destination] };
+        destinations.sort();
         all_paths.push(destinations);
         all_origins.push(i);
         i += 1;
