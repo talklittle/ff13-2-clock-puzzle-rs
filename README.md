@@ -18,3 +18,11 @@ Example for a 12-position clock from the game:
     $ cargo run 1 5 3 4 2 6 2 2 4 5 5 5
 
     Result: 10, 3, 7, 9, 2, 5, 11, 4, 6, 8, 0, 1
+
+## Run it online
+
+You can run a slightly modified version on https://play.rust-lang.org/ using this link:
+
+https://is.gd/EQ9pqh
+
+And editing the `CLOCK_VALS` at the top of the code.
