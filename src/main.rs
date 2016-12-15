@@ -8,6 +8,14 @@ fn main() {
     for arg in args {
         clock_vals.push(arg.parse().unwrap());
     }
+
+    let result = solve(clock_vals);
+
+    let result_string_vec = result.iter().map(|num| { format!("{}", num ) }).collect::<Vec<String>>().join(", ");
+    println!("Result: {}", result_string_vec);
+}
+
+fn solve(clock_vals: Vec<i32>) -> Vec<i32> {
     let count = clock_vals.len() as i32;
 
     let mut all_paths = vec![];
@@ -25,16 +33,9 @@ fn main() {
         i += 1;
     }
 
-    i = 0;
-    for dest in &all_paths {
-        let dest_string_vec = dest.iter().map(|num| { format!("{}", num ) }).collect::<Vec<String>>().join(", ");
-        println!("{} => {}", i, dest_string_vec);
-        i += 1;
-    }
-
     let result = brute_force(all_paths, all_origins, vec![]).unwrap();
-    let result_string_vec = result.iter().map(|num| { format!("{}", num ) }).collect::<Vec<String>>().join(", ");
-    println!("Result: {}", result_string_vec);
+
+    result
 }
 
 fn brute_force(remaining_paths: Vec<Vec<i32>>, allowed_origins: Vec<i32>, path_so_far: Vec<i32>) -> Result<Vec<i32>, String> {
@@ -42,7 +43,6 @@ fn brute_force(remaining_paths: Vec<Vec<i32>>, allowed_origins: Vec<i32>, path_s
         if !path_so_far.contains(&i) {
             let mut new_path_so_far = path_so_far.clone();
             new_path_so_far.push(i);
-            println!("Pushing {}", i);
 
             // end condition
             if new_path_so_far.len() == remaining_paths.len() {
@@ -61,4 +61,10 @@ fn brute_force(remaining_paths: Vec<Vec<i32>>, allowed_origins: Vec<i32>, path_s
     }
 
     Err("Invalid clock".to_string())
+}
+
+#[test]
+fn solve_12_hour_example_1() {
+    let expected = vec![10, 3, 7, 9, 2, 5, 11, 4, 6, 8, 0, 1];
+    assert_eq!(expected.as_slice(), solve(vec![1, 5, 3, 4, 2, 6, 2, 2, 4, 5, 5, 5]).as_slice());
 }
